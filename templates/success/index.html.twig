@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of successes{% endblock %}
+
+{% block body %}
+<h1>Here are all the success :</h1>
+<ul>
+    {% for success in successes %}
+        <li><h3>{{ success.name }}</h3></li>
+        <li><p>{{ success.description }}</p></li>
+        <li><p>Trophy reward : {{ success.rewardPoints }}</p></li>
+        <li><p>Exp reward : {{ success.rewardExp }}</p></li>
+    {% endfor %}
+</ul>
+{% endblock %}
