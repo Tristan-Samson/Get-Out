@@ -20,9 +20,9 @@
 
 
     <div class="row justify-content-center mt-5">
-        <div class="card  col-10 col-md-8 col-lg-8 m-5">
-            <div class="card-body">
-                <h5 class="card-title">Daily Quests</h5>
+        <div class="card  col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body ">
+                <h5 class="card-title ">Daily Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                 {% for daily in dailys %}
                 <a href="{{ path('quest_show' , { 'id': daily.id} )}}"><p class="card-text">{{ daily.name  }}</p></a>
@@ -30,8 +30,8 @@
                 <a href="{{ path('quest_type' , {'type': dailys.0.type}) }}" class="card-link align-items-end">View</a>
             </div>
         </div>
-        <div class="card col-10 col-md-8 col-lg-8 m-5">
-            <div class="card-body">
+        <div class="card col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body ">
                 <h5 class="card-title">Limit-time Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                 {% for limit in limits %}
@@ -40,8 +40,8 @@
                 <a href="{{ path('quest_type' , {'type': limits.1.type}) }}" class="card-link">View</a>
             </div>
         </div>
-        <div class="card col-10 col-md-8 col-lg-8 m-5 ">
-            <div class="card-body">
+        <div class="card col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body ">
                 <h5 class="card-title">Personal Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     {% for personal in personals %}
