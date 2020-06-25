@@ -116,11 +116,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
-=======
->>>>>>> 7686daa87b5ec8f758e63c5633265b775d8f6e11
+    <orderEntry type="library" name="jquery-3.5.1.slim" level="application" />
   </component>
 </module>
