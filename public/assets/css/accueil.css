@@ -69,3 +69,31 @@ li{
     color:#0056b3;
     text-decoration: none;
 }
+@media screen and (max-width: 768px) and (min-width: 426px){
+    .lol{
+
+        margin-left: 250px;
+
+    }
+}
+@media screen and (max-width: 425px) and (min-width: 376px){
+    .lol{
+
+        margin-left: 140px;
+
+    }
+}
+@media screen and (max-width: 375px) and (min-width: 321px){
+    .lol{
+
+        margin-left: 120px;
+
+    }
+}
+@media screen and (max-width: 320px){
+    .lol{
+
+        margin-left: 110px;
+
+    }
+}
