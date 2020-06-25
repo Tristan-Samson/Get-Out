@@ -4,8 +4,10 @@
 
 {% block body %}
     <h1>Create new Quest</h1>
+<div class="row justify-content-center">
+    <div class="col-8">
+        {{ include('quest/_form.html.twig') }}
+    </div>
+</div>
 
-    {{ include('quest/_form.html.twig') }}
-
-    <a href="{{ path('quest_index') }}">back to list</a>
 {% endblock %}
