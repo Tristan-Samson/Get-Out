@@ -100,6 +100,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
         // redirect to some "app_homepage" route - of wherever you want
         return new RedirectResponse($this->urlGenerator->generate('dashboard_index'));
+
     }
 
     protected function getLoginUrl()
