@@ -50,6 +50,8 @@ class RegistrationController extends AbstractController
             foreach ($quests as $quest)
             {
                 $validation = new Validation();
+                $currentDate = new \DateTime("now");
+                $validation->setValidationDate($currentDate);
                 $validation->setUserId($user);
                 $validation->setQuests($quest);
                 $validation->setIsValid(false);

@@ -11,8 +11,7 @@ class QuestManager
     {
         $lastClear = $validation->getValidationDate();
         $currentDate = new \DateTime("now");
-
-        $interval = $currentDate->diff($lastclear, true);
+        $interval = $currentDate->diff($lastClear, true);
         if (($interval->days > 0) && ($validation->getIsValid())) 
         {
             $validation->setIsValid(false);
