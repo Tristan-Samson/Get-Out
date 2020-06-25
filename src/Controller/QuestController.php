@@ -43,10 +43,11 @@ class QuestController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $quest->setType(3);
             $entityManager->persist($quest);
             $entityManager->flush();
 
-            return $this->redirectToRoute('quest_index');
+            return $this->redirectToRoute('dashboard_index');
         }
 
         return $this->render('quest/new.html.twig', [

@@ -14,26 +14,26 @@
 <div class="container mb-3">
     <div class="row">
 
-        <h1 class="h3 mb-3 font-weight-normal offset-4 col-6">Please Register</h1>
+        <h1 class="h3 mb-3 font-weight-normal offset-4 col-5">Please Register</h1>
 
         {{ form_start(registrationForm) }}
-        <div class="col-1 offset-11 lol mt-3 ">
+        <div class="col-5 offset-7 lol mt-3 ">
             {{ form_row(registrationForm.pseudo) }}
                 </div>
-        <div class="col-1 offset-11  lol mt-3">
+        <div class="col-5 offset-7  lol mt-3">
             {{ form_row(registrationForm.email) }}
         </div>
-        <div class="col-1 offset-11  lol mt-3">
+        <div class="col-5 offset-7  lol mt-3">
             {{ form_row(registrationForm.plainPassword, {
                 label: 'Password'
             }) }}
         </div>
-        <div class="col-1 offset-11  lol mt-3">
+        <div class="col-5 offset-7  lol mt-3">
             {{ form_row(registrationForm.plainPassword, {
                 label: 'Confirm Password'
             }) }}
         </div>
-        <div class=" lol ">
+        <div class=" col-5 offset-7 lol ">
             {{ form_row(registrationForm.agreeTerms) }}
         </div>
 
@@ -47,5 +47,5 @@
 
 </div>
 
- 
+
 {% endblock %}
