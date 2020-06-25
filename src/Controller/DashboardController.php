@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Quest;
+use App\Entity\Success;
 use App\Entity\User;
 use App\Services\QuestManager;
 use App\Repository\ValidationRepository;
@@ -46,8 +47,11 @@ class DashboardController extends AbstractController
             ['type' => 3],null,3
         );
 
+
         $user = $this->getUser();
+        $successes = $user->getsuccesses();
         return $this->render('dashboard/index.html.twig', [
+            'successes'=>$successes,
             'user' => $user,
             'dailys' =>$dailyquest,
             'limits' => $limitquest,

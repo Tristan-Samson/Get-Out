@@ -43,6 +43,7 @@ class QuestController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $quest->setType(3);
             $entityManager->persist($quest);
             $entityManager->flush();
 
