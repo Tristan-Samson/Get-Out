@@ -50,7 +50,7 @@
             "ref": "fc52d86631a6dfd9fdf3381d0b7e3df2069e51b3"
         },
         "files": [
-            "src/DataFixtures/AppFixtures.php"
+            "./src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -118,7 +118,7 @@
         "version": "2.8.0"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.4.7"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.1.0"
