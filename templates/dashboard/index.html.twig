@@ -4,8 +4,11 @@
 
 {% block body %}
     <div class=" row justify-content-center mt-5 mb-5">
-        <img CLASS="col-1 rounded-circle" src="{{ asset('assets/img/avatar.jpg') }}" alt=""/>
+        <img CLASS="col-1 rounded-circle" src="{{ asset('assets/img/avatar.png') }}" alt=""/>
         <h3 class="col-3">{{ user.pseudo }}</h3>
+        <h6 class="card-subtitle mb-2 text-muted">{{ user.successes.name }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+
     </div>
 
 
