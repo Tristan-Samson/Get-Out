@@ -23,22 +23,12 @@ class Character
     /**
      * @ORM\Column(type="integer")
      */
-    private $Hair_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Chest_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Legs_id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $health;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $attack;
 
     /**
      * @ORM\Column(type="integer")
@@ -65,42 +55,6 @@ class Character
         return $this->id;
     }
 
-    public function getHairId(): ?int
-    {
-        return $this->Hair_id;
-    }
-
-    public function setHairId(int $Hair_id): self
-    {
-        $this->Hair_id = $Hair_id;
-
-        return $this;
-    }
-
-    public function getChestId(): ?int
-    {
-        return $this->Chest_id;
-    }
-
-    public function setChestId(int $Chest_id): self
-    {
-        $this->Chest_id = $Chest_id;
-
-        return $this;
-    }
-
-    public function getLegsId(): ?int
-    {
-        return $this->Legs_id;
-    }
-
-    public function setLegsId(int $Legs_id): self
-    {
-        $this->Legs_id = $Legs_id;
-
-        return $this;
-    }
-
     public function getHealth(): ?int
     {
         return $this->health;
@@ -109,6 +63,18 @@ class Character
     public function setHealth(int $health): self
     {
         $this->health = $health;
+
+        return $this;
+    }
+
+    public function getAttack(): ?int
+    {
+        return $this->attack;
+    }
+
+    public function setAttack(int $attack): self
+    {
+        $this->attack = $attack;
 
         return $this;
     }

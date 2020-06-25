@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Quest;
 use App\Form\QuestType;
 use App\Repository\QuestRepository;
+use App\Services\QuestManager;
+use App\Repository\ValidationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,5 +102,42 @@ class QuestController extends AbstractController
         }
 
         return $this->redirectToRoute('quest_index');
+    }
+
+    /**
+     * @Route("/validation/{id}", name="quest_validation", methods={"GET"})
+     * @param Quest $quest
+     * @return Response
+     */
+    public function validation(Quest $quest, ValidationRepository $vr): Response
+    {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $validation = $vr->findOneBy(
+            [
+                'user_id' => $user->getId(),
+                'quests' => $quest->getId()
+            ]
+        );
+        $currentDate = new \DateTime("now");
+        $validation->setValidationDate($currentDate);
+        $validation->setIsValid(true);
+        $quest = $validation->getQuests();
+        $user = $validation->getuserId();
+        $entityManager->persist($validation);
+        
+        $avatar = $user->getAvatar();
+        $avatar->setTotalExp($avatar->getTotalExp() + $quest->getExp());
+        $rewardStuff = $quest->getEquipement();
+        if (isset($rewardStuff))
+        {
+            $avatar->addEquipement($rewardStuff);
+        }
+        $entityManager->persist($avatar);
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('dashboard_index');
     }
 }

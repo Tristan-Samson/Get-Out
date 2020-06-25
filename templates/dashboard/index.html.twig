@@ -44,10 +44,12 @@
             <div class="card-body ">
                 <h5 class="card-title">Personal Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                {% for personal in personals %}
-                <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
-                {% endfor %}
-                <a href="{{ path('quest_type' , {'type': personals.2.type}) }}" class="card-link">View</a>
+                    {% for personal in personals %}
+                        {%  if personal is not empty%}
+                            <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
+                        {% endif %}
+                    {% endfor %}
+                    <a href="{{ path('quest_type' , {'type': 3}) }}" class="card-link">View</a>
                 <a href="{{ path('quest_new') }}" class="card-link">Create one</a>
             </div>
         </div>

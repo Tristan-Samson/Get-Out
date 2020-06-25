@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Character;
+use App\Entity\Quest;
+use App\Entity\Validation;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,6 +35,29 @@ class RegistrationController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+
+            $character = new Character();
+            $character->setUser($user);
+            $character->setTotalExp(0);
+            $character->setHealth(50);
+            $character->setAttack(10);
+            $entityManager->persist($character);
+
+            $quests = $this->getDoctrine()
+            ->getRepository(Quest::class)
+            ->findAll();
+
+            foreach ($quests as $quest)
+            {
+                $validation = new Validation();
+                $currentDate = new \DateTime("now");
+                $validation->setValidationDate($currentDate);
+                $validation->setUserId($user);
+                $validation->setQuests($quest);
+                $validation->setIsValid(false);
+                $entityManager->persist($validation);
+            }
+
             $entityManager->flush();
             // do anything else you need here, like send an email
 
