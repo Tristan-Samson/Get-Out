@@ -1,0 +1,34 @@
+.bg-accueil{
+
+padding: 0px;
+
+}
+img{
+    border-radius: 5vh;
+
+}
+
+nav{
+    background-color: #3a8eba;
+    font-family: 'Noto Sans', sans-serif;
+
+}
+a{
+    color: white;
+}
+body{
+    font-family: 'Noto Sans', sans-serif;
+}
+section{
+    margin-top: -50px;
+    background-image: url("https://www.coteoweb.com/application/themes/theme_simpleo_coteo/images/landing_page_camping/introduction-landing-page-camping.png");
+    height: 560px;
+    background-size: 100%;
+}
+button{
+    margin-top: 200px;
+    background-color: #3a8eba;
+    border-color: #3a8eba;
+    color:white;
+
+}
