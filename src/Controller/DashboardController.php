@@ -47,7 +47,6 @@ class DashboardController extends AbstractController
             ['type' => 3],null,3
         );
 
-
         $user = $this->getUser();
         $successes = $user->getsuccesses();
         return $this->render('dashboard/index.html.twig', [
