@@ -59,3 +59,12 @@ li{
 .titreSucces{
     color:#1E90FF;
 }
+
+.link{
+    color: white;
+    text-decoration: none;
+}
+.link:hover{
+    color:#0056b3;
+    text-decoration: none;
+}
