@@ -17,21 +17,4 @@ class QuestManager
             $validation->setIsValid(false);
         }
     }
-
-    public function questValidation(Validation $validation)
-    {
-        $currentDate = new \DateTime("now");
-        $validation->setValidationDate($currentDate);
-        $validation->setIsValid(true);
-        $quest = $validation->getQuests();
-        $user = $validation->getuserId();
-
-        $avatar = $user->getAvatar();
-        $avatar->setTotalExp($avatar->getTotalExp() + $quest->getExp());
-        $rewardStuff = $quest->getEquipement();
-        if (isset($rewardStuff))
-        {
-            $avatar->addEquipement($rewardStuff);
-        }
-    }
 }
