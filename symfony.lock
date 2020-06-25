@@ -51,6 +51,7 @@
         },
         "files": [
             "src/DataFixtures/AppFixtures.php"
+
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
