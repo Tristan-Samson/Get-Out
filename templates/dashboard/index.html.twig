@@ -3,35 +3,41 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div class=" row">
+    <div class=" row justify-content-center mt-5 mb-5">
         <img CLASS="col-1 rounded-circle" src="{{ asset('assets/img/avatar.jpg') }}" alt=""/>
         <h3 class="col-3">{{ user.pseudo }}</h3>
     </div>
 
 
-    <div class="row justify-content-center">
-        <div class="card  col-10 col-md-8 col-lg-3 mr-1">
+    <div class="row justify-content-center mt-5">
+        <div class="card  col-10 col-md-8 col-lg-8 m-5">
             <div class="card-body">
                 <h5 class="card-title">Daily Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">View</a>
+                {% for daily in dailys %}
+                <a href="{{ path('quest_show' , { 'id': daily.id} )}}"><p class="card-text">{{ daily.name  }}</p></a>
+                {% endfor %}
+                <a href="{{ path('quest_type' , {'type': dailys.0.type}) }}" class="card-link align-items-end">View</a>
             </div>
         </div>
-        <div class="card col-10 col-md-8 col-lg-3 mr-1">
+        <div class="card col-10 col-md-8 col-lg-8 m-5">
             <div class="card-body">
                 <h5 class="card-title">Limit-time Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">View </a>
+                {% for limit in limits %}
+                    <a href="{{ path('quest_show' , { 'id': limit.id} )}}"><p class="card-text">{{ limit.name  }}</p></a>
+                {% endfor %}
+                <a href="{{ path('quest_type' , {'type': dailys.1.type}) }}" class="card-link">View</a>
             </div>
         </div>
-        <div class="card col-10 col-md-8 col-lg-3 ">
+        <div class="card col-10 col-md-8 col-lg-8 m-5 ">
             <div class="card-body">
                 <h5 class="card-title">Personal Quests</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="{{ path('quest_index') }}" class="card-link">View</a>
+                {% for personal in personals %}
+                <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
+                {% endfor %}
+                <a href="{{ path('quest_type' , {'type': dailys.2.type}) }}" class="card-link">View</a>
                 <a href="{{ path('quest_new') }}" class="card-link">Create one</a>
             </div>
         </div>

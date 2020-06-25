@@ -15,15 +15,22 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuestController extends AbstractController
 {
+
+
     /**
-     * @Route("/", name="quest_index", methods={"GET"})
+     * @Route("/type/{type}", name="quest_type", methods={"GET"})
+     * @param $type
+     * @param QuestRepository $questRepository
+     * @return Response
      */
-    public function index(QuestRepository $questRepository): Response
+    public function questByType($type,QuestRepository $questRepository): Response
     {
+
         return $this->render('quest/index.html.twig', [
-            'quests' => $questRepository->findAll(),
+            'quests' => $questRepository->findBy(['type' => $type]),
         ]);
     }
+
 
     /**
      * @Route("/new", name="quest_new", methods={"GET","POST"})
@@ -50,6 +57,8 @@ class QuestController extends AbstractController
 
     /**
      * @Route("/{id}", name="quest_show", methods={"GET"})
+     * @param Quest $quest
+     * @return Response
      */
     public function show(Quest $quest): Response
     {

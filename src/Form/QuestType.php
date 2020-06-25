@@ -17,9 +17,7 @@ class QuestType extends AbstractType
         $builder
             ->add('name')
             ->add('Description')
-            ->add('type' , null , ['empty_data' => 3])
             ->add('exp')
-            ->add('equipement', EntityType::class, ['class'=>Equipement::class, 'choice_label'=>'name'])
         ;
     }
 
