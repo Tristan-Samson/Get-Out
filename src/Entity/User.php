@@ -53,9 +53,15 @@ class User implements UserInterface
      */
     private $avatar;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Validation::class, mappedBy="user_id")
+     */
+    private $validations;
+
     public function __construct()
     {
         $this->successes = new ArrayCollection();
+        $this->validations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +195,37 @@ class User implements UserInterface
         $newUser = null === $avatar ? null : $this;
         if ($avatar->getUser() !== $newUser) {
             $avatar->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Validation[]
+     */
+    public function getValidations(): Collection
+    {
+        return $this->validations;
+    }
+
+    public function addValidation(Validation $validation): self
+    {
+        if (!$this->validations->contains($validation)) {
+            $this->validations[] = $validation;
+            $validation->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeValidation(Validation $validation): self
+    {
+        if ($this->validations->contains($validation)) {
+            $this->validations->removeElement($validation);
+            // set the owning side to null (unless already changed)
+            if ($validation->getUserId() === $this) {
+                $validation->setUserId(null);
+            }
         }
 
         return $this;
