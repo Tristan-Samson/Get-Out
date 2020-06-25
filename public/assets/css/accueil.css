@@ -13,7 +13,8 @@ nav{
     font-family: 'Noto Sans', sans-serif;
 
 }
-a{
+.aAccueil{
+    color: white;
 }
 body{
     font-family: 'Noto Sans', sans-serif;
@@ -29,5 +30,33 @@ button{
     background-color: #3a8eba;
     border-color: #3a8eba;
     color:white;
+    padding: 10px;
 
 }
+.logoSite{
+    height: 200px;
+    width:20px;
+}
+
+.lol{
+
+    margin-left: 400px;
+
+}
+input{
+    border-radius: 2px;
+}
+.btn{
+    margin-top: 0;
+    background-color:#3a8eba ;
+}
+li{
+    list-style: none;
+}
+.colorsuccess{
+    color:#3a8eba;
+}
+.titreSucces{
+    color:#1E90FF;
+}
+
