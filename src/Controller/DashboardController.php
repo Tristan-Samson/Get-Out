@@ -33,7 +33,6 @@ class DashboardController extends AbstractController
 
 
         $user = $this->getUser();
-        $success = $this->getDoctrine()->getRepository(Success::class)->find($this->get($user));
         return $this->render('dashboard/index.html.twig', [
             'user' => $user,
             'dailys' =>$dailyquest,
