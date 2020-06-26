@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Quest;
+use App\Entity\Validation;
 use App\Form\QuestType;
 use App\Repository\QuestRepository;
 use App\Services\QuestManager;
@@ -47,6 +48,16 @@ class QuestController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $quest->setType(3);
             $entityManager->persist($quest);
+
+            $validation = new Validation();
+            $currentDate = new \DateTime("now");
+            $validation->setValidationDate($currentDate);
+            $user = $this->getUser();
+            $validation->setUserId($user);
+            $validation->setQuests($quest);
+            $validation->setIsValid(false);
+            $entityManager->persist($validation);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('dashboard_index');

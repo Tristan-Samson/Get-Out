@@ -43,9 +43,15 @@ class RegistrationController extends AbstractController
             $character->setAttack(10);
             $entityManager->persist($character);
 
-            $quests = $this->getDoctrine()
-            ->getRepository(Quest::class)
-            ->findAll();
+            $dailyquest = $this->getDoctrine()->getRepository(Quest::class)->findBy(
+                ['type' => 1],null,3
+            );
+
+            $limitquest = $this->getDoctrine()->getRepository(Quest::class)->findBy(
+                ['type' => 2],null,3
+            );
+
+            $quests = array_merge($dailyquest, $limitquest);
 
             foreach ($quests as $quest)
             {

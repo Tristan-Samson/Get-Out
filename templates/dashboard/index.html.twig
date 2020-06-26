@@ -14,7 +14,6 @@
             {% endfor %}
         </ul>
         </h6>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
 
     </div>
 
@@ -23,9 +22,13 @@
         <div class="card  col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
             <div class="card-body ">
                 <h5 class="card-title ">Daily Quests</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Here are your daily quests you can achieve every 24 hours.</h6>
                 {% for daily in dailys %}
-                <a href="{{ path('quest_show' , { 'id': daily.id} )}}"><p class="card-text">{{ daily.name  }}</p></a>
+                    {% if daily.id in valid %}
+                        <a href="#"><p class="card-text text-success">{{ daily.name  }}</p></a>
+                    {% else %}
+                        <a href="{{ path('quest_show' , { 'id': daily.id} )}}"><p class="card-text">{{ daily.name  }}</p></a>
+                    {% endif %}
                 {% endfor %}
                 <a href="{{ path('quest_type' , {'type': dailys.0.type}) }}" class="card-link align-items-end">View</a>
             </div>
@@ -33,9 +36,13 @@
         <div class="card col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
             <div class="card-body ">
                 <h5 class="card-title">Limit-time Quests</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Here are your main quests. You are not limited in time to achieve them.</h6>
                 {% for limit in limits %}
-                    <a href="{{ path('quest_show' , { 'id': limit.id} )}}"><p class="card-text">{{ limit.name  }}</p></a>
+                    {% if limit.id in valid %}
+                        <a href="#"><p class="card-text text-success">{{ limit.name  }}</p></a>
+                    {% else %}
+                        <a href="{{ path('quest_show' , { 'id': limit.id} )}}"><p class="card-text">{{ limit.name  }}</p></a>
+                    {% endif %}
                 {% endfor %}
                 <a href="{{ path('quest_type' , {'type': limits.1.type}) }}" class="card-link">View</a>
             </div>
@@ -43,9 +50,14 @@
         <div class="card col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
             <div class="card-body ">
                 <h5 class="card-title">Personal Quests</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Here are the challenges you give to yourself. You can create any personalized quest to give yourself personal goals.</h6>
                     {% for personal in personals %}
                         {%  if personal is not empty%}
+                            {% if personal.id in valid %}
+                                <a href="#"> <p class="card-text text-success">{{ personal.name  }}</p></a>
+                            {% else %}
+                                <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
+                            {% endif %}
                             <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
                         {% endif %}
                     {% endfor %}

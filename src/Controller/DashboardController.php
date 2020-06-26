@@ -25,9 +25,12 @@ class DashboardController extends AbstractController
      */
     public function index(QuestManager $qm, ValidationRepository $vr): Response
     {
-        $dailyquest = $this->getDoctrine()->getRepository(Quest::class)->findBy(
+        $dailyquest = $this->getDoctrine()
+        ->getRepository(Quest::class)
+        ->findBy(
             ['type' => 1],null,3
         );
+
         $user = $this->getUser();
         foreach ($dailyquest as $quest)
         {
@@ -40,12 +43,28 @@ class DashboardController extends AbstractController
             $qm->resetDailyQuest($validation);
 
         }
-        $limitquest = $this->getDoctrine()->getRepository(Quest::class)->findBy(
+        $limitquest = $this->getDoctrine()
+        ->getRepository(Quest::class)
+        ->findBy(
             ['type' => 2],null,3
         );
-        $personalquest = $this->getDoctrine()->getRepository(Quest::class)->findBy(
-            ['type' => 3],null,3
-        );
+
+
+        $userid = $user->getId();
+
+        $personalquest = $this->getDoctrine()
+        ->getRepository(Quest::class)
+        ->findPersonnalQuestsByUser($userid);
+
+        $valid = $this->getDoctrine()
+        ->getRepository(Quest::class)
+        ->findAllValid();
+
+        $validquests = [];
+        foreach ($valid as $validquest)
+        {
+            $validquests[] = $validquest->getId();
+        }
 
         $user = $this->getUser();
         $successes = $user->getsuccesses();
@@ -55,6 +74,7 @@ class DashboardController extends AbstractController
             'dailys' =>$dailyquest,
             'limits' => $limitquest,
             'personals' => $personalquest,
+            'valid' => $validquests
         ]);
     }
 }
