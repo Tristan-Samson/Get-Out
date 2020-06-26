@@ -48,11 +48,13 @@ class QuestRepository extends ServiceEntityRepository
         ->getResult();
     }
 
-    public function findAllValid()
+    public function findAllValid($userid)
     {
         return $this->createQueryBuilder('q')
         ->andWhere('v.is_valid = true')
+        ->andWhere('v.user_id = :userid')
         ->leftJoin('q.validations', 'v')
+        ->setParameter('userid', $userid)
         ->getQuery()
         ->getResult();
     }

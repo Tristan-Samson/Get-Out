@@ -3,34 +3,41 @@
 {% block title %}Accueil{% endblock %}
 
   {% block body %}
-
-    <section>
         <div class="container">
             <div class="row col-12">
-                <a class="favorite styled rounded mx-auto d-block" href="/register">
-                    <button class="rounded" type="button">
-                        Subscribe
-                    </button>
-                </a>
+                <h1 class="center col-12"> Welcome on Go Ahead</h1>
             </div>
         </div>
-    </section>
 
         <div class="container">
-
             <div class="row mt-5">
-                <img class="col-lg-6 p-0" src="https://cdn.futura-sciences.com/buildsv6/images/wide1920/2/8/5/285e6423d3_50148975_logiciels.jpg" />
-                <p class="col-lg-6 mt-5 text-center ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <img class="col-lg-6 p-0" src="{{ asset('assets/image/home_dashboard.PNG') }}" />
+                <div class="col-lg-6 mt-5 text-center my-auto">
+                    <h3>Motivate yourself</h3>
+                    <p>Our system of quests and successes inspired by games gives you 
+                    motivation to go ahead and do in real life actions to accomplish your goals.
+                    Your own evolution is represented vidually by the experience you gather into the game.</p>
+                </div>
             </div>
 
             <div class="row mt-5">
-                <p class="col-lg-6 mt-5 text-center ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                <img class="col-lg-6 p-0" src="https://www.mikodigital.com/wp-content/uploads/2019/06/creation-site-web-avec-agence-600x347.jpg" />
+                <div class="col-lg-6 mt-5 text-center my-auto">
+                    <h3>Personalize your experience</h3>
+                    <p>You can create your own challenges and goals by creating your personalized quests. 
+                    Get a fully personalized experience with this feature and motivate yourself on executing 
+                    actions you really enjoy and want to do.</p>
+                </div>
+                <img class="col-lg-6 p-0" src="{{ asset('assets/image/home_new_quest.PNG') }}" />
             </div>
 
             <div class="row mt-5">
-                <img class="col-lg-6  p-0" src="https://www.cndcreation.com/wp-content/uploads/2019/08/shutterstock_1229747458-Converti.png" />
-                <p class="col-lg-6 mt-5 text-center ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <img class="col-lg-6  p-0" src="{{ asset('assets/image/home_valid_quest.PNG') }}" />
+                <div class="col-lg-6 mt-5 text-center my-auto">
+                    <h3>Go at your own pace</h3>
+                    <p>With the quests validation system, you can validate your quests whenever you want. 
+                    Don't get in your own way while wanting to do everything at the same time, 
+                    you aren't limited in your quests and can do as many as you want and as frequently as you want.</p>
+                </div>
             </div>
 
         </div>

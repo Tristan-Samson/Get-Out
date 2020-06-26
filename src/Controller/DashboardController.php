@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Quest;
 use App\Entity\Success;
 use App\Entity\User;
+use App\Entity\Character;
 use App\Services\QuestManager;
+use App\Services\ExpManager;
 use App\Repository\ValidationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +25,7 @@ class DashboardController extends AbstractController
      * @Route("/", name="dashboard_index", methods={"GET"})
      * @return Response
      */
-    public function index(QuestManager $qm, ValidationRepository $vr): Response
+    public function index(QuestManager $qm, ValidationRepository $vr, ExpManager $xp): Response
     {
         $dailyquest = $this->getDoctrine()
         ->getRepository(Quest::class)
@@ -58,7 +60,7 @@ class DashboardController extends AbstractController
 
         $valid = $this->getDoctrine()
         ->getRepository(Quest::class)
-        ->findAllValid();
+        ->findAllValid($userid);
 
         $validquests = [];
         foreach ($valid as $validquest)
@@ -66,15 +68,19 @@ class DashboardController extends AbstractController
             $validquests[] = $validquest->getId();
         }
 
-        $user = $this->getUser();
         $successes = $user->getsuccesses();
+        $avatar = $user->getAvatar();
+
+        $level = $xp->getLevel($avatar->getTotalExp());
         return $this->render('dashboard/index.html.twig', [
             'successes'=>$successes,
             'user' => $user,
             'dailys' =>$dailyquest,
             'limits' => $limitquest,
             'personals' => $personalquest,
-            'valid' => $validquests
+            'valid' => $validquests,
+            'character' => $avatar,
+            'level' => $level
         ]);
     }
 }
