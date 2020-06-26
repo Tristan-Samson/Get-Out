@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of successes{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="border rounded shadow p-3 mb-5 bg-white rounded offset-1 w-100 d-flex justify-content-center col-10  ">
+<h1 class="titreSucces">Here are all the successes </h1>
+        </div>
+<ul>
+
+                <div class="row">
+    {% for success in successes %}
+            <div class="col-3 border m-3 rounded shadow p-3 mb-5 bg-white rounded ml-5">
+        <li><h3 class="colorsuccess">{{ success.name }}</h3></li>
+        <li><p>{{ success.description }}</p></li>
+        <li><p>Trophy reward : {{ success.rewardPoints }}</p></li>
+        <li><p>Exp reward : {{ success.rewardExp }}</p></li>
+            </div>
+    {% endfor %}
+                </div>
+    </div>
+</ul>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#3a8eba" fill-opacity="1" d="M0,192L48,165.3C96,139,192,85,288,96C384,107,480,181,576,213.3C672,245,768,235,864,208C960,181,1056,139,1152,101.3C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+{% endblock %}

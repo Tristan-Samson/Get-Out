@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Quest;
+use App\Entity\Validation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -36,6 +37,27 @@ class QuestRepository extends ServiceEntityRepository
     }
     */
 
+    public function findPersonnalQuestsByUser($userid)
+    {
+        return $this->createQueryBuilder('q')
+        ->andWhere('q.type = 3')
+        ->andWhere('v.user_id = :userid')
+        ->leftJoin('q.validations', 'v')
+        ->setParameter('userid', $userid)
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function findAllValid($userid)
+    {
+        return $this->createQueryBuilder('q')
+        ->andWhere('v.is_valid = true')
+        ->andWhere('v.user_id = :userid')
+        ->leftJoin('q.validations', 'v')
+        ->setParameter('userid', $userid)
+        ->getQuery()
+        ->getResult();
+    }
     /*
     public function findOneBySomeField($value): ?Quest
     {

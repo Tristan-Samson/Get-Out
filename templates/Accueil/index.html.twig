@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+  {% block body %}
+        <div class="container">
+            <div class="row col-12">
+                <h1 class="center col-12"> Welcome on Go Ahead</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row mt-5">
+                <img class="col-lg-6 p-0" src="{{ asset('assets/image/home_dashboard.PNG') }}" />
+                <div class="col-lg-6 mt-5 text-center my-auto">
+                    <h3>Motivate yourself</h3>
+                    <p>Our system of quests and successes inspired by games gives you 
+                    motivation to go ahead and do in real life actions to accomplish your goals.
+                    Your own evolution is represented vidually by the experience you gather into the game.</p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-6 mt-5 text-center my-auto">
+                    <h3>Personalize your experience</h3>
+                    <p>You can create your own challenges and goals by creating your personalized quests. 
+                    Get a fully personalized experience with this feature and motivate yourself on executing 
+                    actions you really enjoy and want to do.</p>
+                </div>
+                <img class="col-lg-6 p-0" src="{{ asset('assets/image/home_new_quest.PNG') }}" />
+            </div>
+
+            <div class="row mt-5">
+                <img class="col-lg-6  p-0" src="{{ asset('assets/image/home_valid_quest.PNG') }}" />
+                <div class="col-lg-6 mt-5 text-center my-auto">
+                    <h3>Go at your own pace</h3>
+                    <p>With the quests validation system, you can validate your quests whenever you want. 
+                    Don't get in your own way while wanting to do everything at the same time, 
+                    you aren't limited in your quests and can do as many as you want and as frequently as you want.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#3a8eba" fill-opacity="1" d="M0,192L48,165.3C96,139,192,85,288,96C384,107,480,181,576,213.3C672,245,768,235,864,208C960,181,1056,139,1152,101.3C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+
+  {% endblock %}

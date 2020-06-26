@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <div class=" row justify-content-center mt-5 mb-5">
+        <img CLASS="col-2 rounded-circle card-img" src="{{ asset('assets/img/avatar.png') }}" alt=""/>
+        <div class="col-3 my-auto">
+        <a href="{{ path('character_show' , { 'id': character.id} )}}"><h3 class="col-12 card-title">{{ user.pseudo }}</h3></a>
+
+        <h6 class="card-subtitle mb-2 text-muted offset-1">
+        Lv.{{ level }}
+        </h6>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="card  col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body ">
+                <h5 class="card-title ">Daily Quests</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Here are your daily quests you can achieve every 24 hours.</h6>
+                {% for daily in dailys %}
+                    {% if daily.id in valid %}
+                        <a href="#"><p class="card-text text-success">{{ daily.name  }}</p></a>
+                    {% else %}
+                        <a href="{{ path('quest_show' , { 'id': daily.id} )}}"><p class="card-text">{{ daily.name  }}</p></a>
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ path('quest_type' , {'type': dailys.0.type}) }}" class="card-link align-items-end">View</a>
+            </div>
+        </div>
+        <div class="card col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body ">
+                <h5 class="card-title">Limit-time Quests</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Here are your main quests. You are not limited in time to achieve them.</h6>
+                {% for limit in limits %}
+                    {% if limit.id in valid %}
+                        <a href="#"><p class="card-text text-success">{{ limit.name  }}</p></a>
+                    {% else %}
+                        <a href="{{ path('quest_show' , { 'id': limit.id} )}}"><p class="card-text">{{ limit.name  }}</p></a>
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ path('quest_type' , {'type': limits.1.type}) }}" class="card-link">View</a>
+            </div>
+        </div>
+        <div class="card col-10 col-md-8 col-lg-8 m-5 rounded shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body ">
+                <h5 class="card-title">Personal Quests</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Here are the challenges you give to yourself. You can create any personalized quest to give yourself personal goals.</h6>
+                    {% for personal in personals %}
+                        {%  if personal is not empty%}
+                            {% if personal.id in valid %}
+                                <a href="#"> <p class="card-text text-success">{{ personal.name  }}</p></a>
+                            {% else %}
+                                <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
+                            {% endif %}
+                            <a href="{{ path('quest_show' , { 'id': personal.id} )}}"> <p class="card-text">{{ personal.name  }}</p></a>
+                        {% endif %}
+                    {% endfor %}
+                    <a href="{{ path('quest_type' , {'type': 3}) }}" class="card-link">View</a>
+                <a href="{{ path('quest_new') }}" class="card-link">Create one</a>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#3a8eba" fill-opacity="1" d="M0,192L48,165.3C96,139,192,85,288,96C384,107,480,181,576,213.3C672,245,768,235,864,208C960,181,1056,139,1152,101.3C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+
+
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\QuestRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Quest
      * @ORM\ManyToOne(targetEntity=Equipement::class, inversedBy="quests")
      */
     private $equipement;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Validation::class, mappedBy="quests")
+     */
+    private $validations;
+
+    public function __construct()
+    {
+        $this->validations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,4 +118,36 @@ class Quest
 
         return $this;
     }
+
+    /**
+     * @return Collection|Validation[]
+     */
+    public function getValidations(): Collection
+    {
+        return $this->validations;
+    }
+
+    public function addValidation(Validation $validation): self
+    {
+        if (!$this->validations->contains($validation)) {
+            $this->validations[] = $validation;
+            $validation->setQuests($this);
+        }
+
+        return $this;
+    }
+
+    public function removeValidation(Validation $validation): self
+    {
+        if ($this->validations->contains($validation)) {
+            $this->validations->removeElement($validation);
+            // set the owning side to null (unless already changed)
+            if ($validation->getQuests() === $this) {
+                $validation->setQuests(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
